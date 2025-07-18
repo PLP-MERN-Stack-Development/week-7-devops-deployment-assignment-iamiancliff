@@ -12,7 +12,8 @@ const bugValidationSchema = Joi.object({
   priority: Joi.string().valid('Low', 'Medium', 'High', 'Urgent'),
   assignedTo: Joi.string().trim(),
   reportedBy: Joi.string().required().trim(),
-  tags: Joi.array().items(Joi.string().trim())
+  tags: Joi.array().items(Joi.string().trim()),
+  dueDate: Joi.date().optional(),
 });
 
 /**

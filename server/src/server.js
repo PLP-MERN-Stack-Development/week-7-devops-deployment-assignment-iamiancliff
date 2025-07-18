@@ -5,6 +5,8 @@ const dotenv = require('dotenv');
 const { connectDB } = require('./config/db');
 const { errorHandler, notFound } = require('./middleware/errorHandler');
 const bugRoutes = require('./routes/bugRoutes');
+const multer = require('multer'); // For file uploads
+const upload = multer({ dest: 'uploads/' })
 
 // Load environment variables
 dotenv.config();
@@ -20,9 +22,10 @@ app.use(helmet());
 
 // CORS configuration
 app.use(cors({
-  origin: process.env.CLIENT_URL || 'http://localhost:3000',
+  origin: ['http://localhost:3000', 'http://localhost:5173'], // add both ports
   credentials: true
 }));
+
 
 // Body parsing middleware
 app.use(express.json({ limit: '10mb' }));

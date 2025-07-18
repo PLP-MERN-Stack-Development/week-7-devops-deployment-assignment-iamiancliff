@@ -51,13 +51,20 @@ const bugSchema = new mongoose.Schema({
     required: [true, 'Reporter name is required'],
     trim: true
   },
-  tags: [{
+   dueDate: {
+    type: Date,
+    required: false 
+  },
+  tags: {
     type: String,
     trim: true
-  }],
+  },
   createdAt: {
     type: Date,
     default: Date.now
+  },
+  attachment: {
+    type: String,
   },
   updatedAt: {
     type: Date,
